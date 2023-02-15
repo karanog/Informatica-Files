@@ -1,0 +1,12 @@
+create or replace procedure prc_sales(prdid IN product.prod_id%type,
+qty IN sales_fact.qty%type, tcost OUT number, tprice OUT number, tprofit OUT number) as
+vcost product.pcost%type;
+vprice product.pprice%type;
+
+BEGIN
+    SELECT pcost, pprice INTO vcost, vprice FROM product WHERE prod_id = prdid;
+    tcost := vcost * qty;
+    tprice := vprice * qty;
+    tprofit := tprice - tcost; 
+END;
+/

@@ -1,0 +1,37 @@
+drop table sales_fact_qrntn;
+drop table customer_qrntn;
+drop table product_qrntn;
+drop table location_qrntn;
+
+create table customer_qrntn(cust_id   number(5), 
+          name      varchar2(20) , 
+          parentgrp varchar2(20) , 
+          conglo    varchar2(20) , 
+          trdtype   varchar2(10),
+          errdate date,
+          errmsg  varchar2(100));
+
+create table product_qrntn(prod_id number(5) , 
+                     pname varchar2(20) , 
+                     pcategory varchar2(10), 
+                     psize varchar2(10), 
+                     pprice number(5) , 
+                     pcost number(5),
+          errdate date,
+          errmsg  varchar2(100) );
+
+create table location_qrntn(loc_id number(5) , 
+                      city varchar2(10) , 
+                      state varchar2(20) , 
+                      country varchar2(10),
+          errdate date,
+          errmsg  varchar2(100) );
+
+create table sales_fact_qrntn(sale_dt date ,
+          prod number(5) ,
+          loc number(5) ,
+          cust number(5),
+          qty number(5),
+          errdate date,
+          errmsg  varchar2(100));
+

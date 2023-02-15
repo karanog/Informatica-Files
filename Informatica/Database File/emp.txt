@@ -1,0 +1,5 @@
+empid,name,dept,salary
+1,Anand,10,50000
+2,Babu,10,30000
+3,Chand,20,30000
+defective

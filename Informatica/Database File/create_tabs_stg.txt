@@ -1,0 +1,29 @@
+drop table sales_fact_stg;
+drop table customer_stg;
+drop table product_stg;
+drop table location_stg;
+
+create table customer_stg(cust_id   number(5), 
+          name      varchar2(20) , 
+          parentgrp varchar2(20) , 
+          conglo    varchar2(20) , 
+          trdtype   varchar2(10));
+
+create table product_stg(prod_id number(5), 
+                     pname varchar2(20), 
+                     pcategory varchar2(10), 
+                     psize varchar2(10), 
+                     pprice number(5), 
+                     pcost number(5) );
+
+create table location_stg(loc_id number(5), 
+                      city varchar2(10) , 
+                      state varchar2(20) , 
+                      country varchar2(10) );
+
+create table sales_fact_stg(sale_dt date ,
+          prod number(5) ,
+          loc number(5) ,
+          cust number(5),
+          qty number(5));
+

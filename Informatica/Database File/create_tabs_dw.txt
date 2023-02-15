@@ -1,0 +1,35 @@
+drop table sales_fact;
+drop table customer;
+drop table product;
+drop table location;
+
+drop sequence cust_dw_key; 
+create sequence cust_dw_key;
+
+create table customer(dw_key number(4)  primary key,
+          cust_id   number(5) NOT NULL, 
+          name      varchar2(20) NOT NULL, 
+          parentgrp varchar2(20) NOT NULL, 
+          conglo    varchar2(20) NOT NULL, 
+          trdtype   varchar2(10) NOT NULL);
+
+create table product(prod_id number(5) primary key, 
+                     pname varchar2(20) NOT NULL, 
+                     prev_name varchar2(20),
+                     pcategory varchar2(10) NOT NULL, 
+                     psize varchar2(10) NOT NULL, 
+                     pprice number(5) NOT NULL, 
+                     pcost number(5) NOT NULL);
+
+create table location(loc_id number(5) primary key, 
+                      city varchar2(10) NOT NULL, 
+                      state varchar2(20) NOT NULL, 
+                      country varchar2(10) NOT NULL);
+
+create table sales_fact(sale_dt date ,  --references time_dime(ddate),
+          prod number(5) references product(prod_id),
+          loc number(5) references location(loc_id),
+          cust number(5) references customer(dw_key),
+          qty number(5) NOT NULL,
+          primary key(sale_dt,prod,cust,loc));
+

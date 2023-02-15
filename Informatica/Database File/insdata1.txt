@@ -1,0 +1,25 @@
+-- incremental load
+
+insert into customer_stg values(9,'WalMart','WalMart','WalMart','Regular');
+update customer_stg set conglo = 'Reliance' where cust_id=2;
+
+insert into product_stg values(13,'LuxInt','Soap','100g',20,10);
+update product_stg set pname = 'Fair n Lovely' where prod_id=12;
+
+insert into location_stg values(7,'Bengaluru','Karnataka','India');
+update location_stg set city = 'Chennai' where loc_id=2;
+update location_stg set city = 'Telangana' where loc_id=3;
+
+truncate table sales_fact_stg;
+
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 1,1,1,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 1,2,1,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 1,1,2,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 2,1,1,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 3,1,1,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 1,3,1,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 1,1,3,10);
+insert into  sales_fact_stg values(to_date('27-12-22','dd-mm-yy'), 2,2,1,10);
+
+
+
